@@ -38,14 +38,14 @@ public class BusinessFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.business,container,false);
-        myRecyclerView = (RecyclerView) v.findViewById(R.id.rv_business);
+        myRecyclerView = v.findViewById(R.id.rv_business);
+        new FetchNewsTask().execute();
         return v;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new FetchNewsTask().execute();
 
     }
 

@@ -39,7 +39,8 @@ public class HeadlinesFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.headlines,container,false);
-        myRecyclerView = (RecyclerView) v.findViewById(R.id.rv_headlines);
+        myRecyclerView =  v.findViewById(R.id.rv_headlines);
+        new FetchNewsTask().execute();
         return v;
     }
 
@@ -47,7 +48,6 @@ public class HeadlinesFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new FetchNewsTask().execute();
 
     }
 
@@ -79,7 +79,8 @@ public class HeadlinesFragment extends Fragment {
             newsList = news;
             myRecyclerViewAdapter = new RecyclerViewAdapter(newsList,getContext());
             myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            myRecyclerView.setAdapter(myRecyclerViewAdapter);        }
+            myRecyclerView.setAdapter(myRecyclerViewAdapter);
+        }
 
 
     }

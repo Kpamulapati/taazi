@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 import com.example.taazi.fragment.BusinessFragment;
 import com.example.taazi.fragment.HeadlinesFragment;
-import com.example.taazi.fragment.SportsFragment;
+import com.example.taazi.fragment.TechFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,13 +20,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tabLayout = (TabLayout)findViewById(R.id.tablayout_id);
-        viewPager = (ViewPager)findViewById(R.id.viewpager_id);
+        tabLayout = findViewById(R.id.tablayout_id);
+        viewPager = findViewById(R.id.viewpager_id);
         viewPageAdapter = new ViewPageAdapter(getSupportFragmentManager());
 
         viewPageAdapter.addFragment(new HeadlinesFragment(),"HeadLines");
         viewPageAdapter.addFragment(new BusinessFragment(),"Markets");
-        viewPageAdapter.addFragment(new SportsFragment(),"Tech");
+        viewPageAdapter.addFragment(new TechFragment(),"Tech");
+
 
         viewPager.setAdapter(viewPageAdapter);
         tabLayout.setupWithViewPager(viewPager);

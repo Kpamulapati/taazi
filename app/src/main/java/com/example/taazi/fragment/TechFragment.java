@@ -22,29 +22,31 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
-public class SportsFragment extends Fragment {
+public class TechFragment extends Fragment {
 
     View v;
     RecyclerView myRecyclerView;
     RecyclerViewAdapter myRecyclerViewAdapter;
     List<News> newsList;
+    AsyncTask myTask;
 
-    public SportsFragment(){
+    public TechFragment(){
 
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.technology,container,false);
-        myRecyclerView = (RecyclerView) v.findViewById(R.id.rv_sports);
+        v = inflater.inflate(R.layout.tech,container,false);
+        myRecyclerView =  v.findViewById(R.id.rv_tech);
+        new FetchNewsTask().execute();
         return v;
     }
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new FetchNewsTask().execute();
 
     }
 
@@ -87,7 +89,7 @@ public class SportsFragment extends Fragment {
     public static URL buildUrl() {
         Uri builtUri = Uri.parse(TOP_HEADLINES).buildUpon()
                 .appendQueryParameter("apiKey", "74188e1dc8154400909cd823f2d6ed61")
-                .appendQueryParameter("sources","techcrunch,ars-technica,techradar,engadget,recode")
+                .appendQueryParameter("sources","techcrunch,engadget")
                 .build();
 
         URL url = null;
